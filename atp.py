@@ -7,9 +7,11 @@ import sys
 
 # main
 def main() -> None:
+    args = sys.argv
+
     # get the path
     try:
-        dir_string = str(sys.argv[1])
+        dir_string = str(args[1])
     except:
         print(help())
         quit()
@@ -20,8 +22,7 @@ def main() -> None:
 def run(path) -> None:
     """At the moment, this function just lists the dir of the path"""
 
-    cmd = f'cmd /c "dir \"{path}"'
-
+    cmd = f'dir "{path}"'
     os.system(cmd)
 
 # help/usage
