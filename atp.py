@@ -5,25 +5,47 @@
 import os
 import sys
 
+# variable for sys.argv
+sysargs = sys.argv
+# variable for os.system
+osys = os.system
+
 # main
 def main() -> None:
-    args = sys.argv
+    if len(sysargs) <= 2:
+        getpath()
+
+    elif len(sysargs) > 2:
+        # placeholder to handle tags down the line
+        print(sysargs)
+
+    else:
+        # if there's an error, for some reason
+        raise Exception(f"Command error: {sysargs}")
+
+# get the path
+def getpath() -> None:
+    """Gets the string to be added to the path"""
 
     # get the path
     try:
-        dir_string = str(args[1])
+        dir_string = str(sysargs[1])
+
     except:
+        # if there's no sys.argv[1], the help/usage will be displayed
         print(help())
         quit()
 
-    run(dir_string)
+    addpath(dir_string)
 
-# run
-def run(path) -> None:
+# add to the path
+def addpath(path) -> None:
     """At the moment, this function just lists the dir of the path"""
 
+    # build the command
     cmd = f'dir "{path}"'
-    os.system(cmd)
+    # run the command
+    osys(cmd)
 
 # help/usage
 def help() -> str:
