@@ -1,0 +1,5 @@
+# folders
+__pycache__
+
+# files
+*.exe
